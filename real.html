@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<title>Food Fight</title>
+</head>
+<body style="background-color:rgb(96, 165, 174);">
+<h1 style="font-family: Copperplate, Papyrus, fantasy;font-size:600%;text-align:center;">FoodFight</h1>
+<h3 style="font-family: Copperplate, Papyrus, fantasy;font-size:300%;text-align:center;">
+
+<input id = "resInput" type="text">
+<div id="removelater">
+    <button onclick="addRestaurant()">Add to list</button>
+    <button onclick="displayNames()">Print all</button>
+    <button onclick="removeButtons()">TIME TO VOTE</button>
+</div>
+<p id="afterTimeToVote">
+    visibility: none;
+    hello
+</p>
+
+<p id="output"></p>
+
+
+<script>
+    var restaurant = [];
+    var clickTracker = [];
+    window.onload = function(){
+        displayNames();
+    }
+    function addRestaurant(){
+        var tempRes = document.getElementById("resInput").value;
+        restaurant.push(tempRes);
+    }
+    function displayNames(){
+        var text =  "";
+        for (let index = 0; index < restaurant.length; index++) {
+            if(index == restaurant.length-1){
+                text = text+restaurant[index];
+            }
+            else{
+                text = text+restaurant[index] + ", ";
+            }
+        }
+        document.getElementById("output").innerHTML = text;
+    }
+    function removeButtons(){
+        var myobj = document.getElementById("removelater");
+        myobj.remove();
+        displayNames();
+        document.getElementById("afterTimeToVote").innerHTML = "Now, enter the name, every name = one vote";
+  }
+
+</script>
+</body>
+</html>
